@@ -1,11 +1,13 @@
 package site.luvzy.view;
 
+import site.luvzy.db.DBOperation;
 import site.luvzy.tools.GuiTools;
 
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.sql.SQLException;
 
 
 /**
@@ -19,10 +21,10 @@ public abstract class MyDialog extends JDialog {
     /**
      * 输入框返回的数据
      */
-    protected int number;//
-    protected int price;
-    protected String name;
-    protected String unit;
+    private int number;//
+    private int price;
+    private String name;
+    private String unit;
     /**
      * 标签
      */
@@ -95,6 +97,9 @@ public abstract class MyDialog extends JDialog {
             editAdd[i] = new JTextField(6);
             editAdd[i].setBounds(x, 280, 80, 25);
             this.add(editAdd[i]);
+            /**
+             * 获取输入的数据
+             */
             x = x + 100;
         }
         button[0].setBounds(460, 280, 90, 25);
@@ -133,6 +138,16 @@ public abstract class MyDialog extends JDialog {
                 name = editAdd[1].getText();
                 price = Integer.parseInt(editAdd[2].getText());
                 unit = editAdd[3].getText();
+                try {
+                    DBOperation operation = new DBOperation();
+                    operation.addData(number,name,price,unit);
+                } catch (SQLException throwables) {
+                    throwables.printStackTrace();
+                }
+               /* System.out.println(number);
+                System.out.println(name);
+                System.out.println(price);
+                System.out.println(unit);*/
             }
         });
         button[1].addActionListener(new ActionListener() {

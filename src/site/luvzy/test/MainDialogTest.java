@@ -1,9 +1,11 @@
 package site.luvzy.test;
 
+import site.luvzy.db.DBOperation;
 import site.luvzy.view.MyDialog;
 
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableModel;
+import java.sql.SQLException;
 
 
 public class MainDialogTest extends MyDialog {

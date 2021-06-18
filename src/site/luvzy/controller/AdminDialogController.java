@@ -1,7 +1,12 @@
 package site.luvzy.controller;
 
+import org.jetbrains.annotations.Nls;
+import site.luvzy.data.DataBase;
 import site.luvzy.view.MyDialog;
 
+import javax.swing.event.TableModelListener;
+import javax.swing.table.DefaultTableModel;
+import javax.swing.table.TableModel;
 import java.awt.*;
 import java.util.ArrayList;
 
@@ -23,7 +28,7 @@ public class AdminDialogController extends MyDialog {
     public void queryFruitItem() {
         String sheet[] = new String[]{"水果编号", "水果名称", "水果单价(Kg/元)", "计价单位"};
         ArrayList<FruitItem> list = new ArrayList<>();
-        list.add(new FruitItem("苹果", "kg", 2, 1));
+        list.add(new FruitItem(1, "苹果", 2,"kg"));
     }
 
     @Override
@@ -42,6 +47,7 @@ public class AdminDialogController extends MyDialog {
 
     @Override
     public void onResume() {
-
+        String []titleList = new String[]{"水果编号", "水果名称", "单价", "单位"};
+        // TableModel tableModel = new DefaultTableModel(DataBase.data,titleList);
     }
 }

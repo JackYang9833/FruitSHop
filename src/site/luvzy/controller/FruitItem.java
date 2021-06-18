@@ -12,7 +12,7 @@ public class FruitItem {
     private int price;
     private int number;
 
-    public FruitItem(String name, String unit, int price, int number) {
+    public FruitItem(int number,String name, int price, String unit) {
         this.name = name;
         this.number = number;
         this.unit = unit;

@@ -19,7 +19,7 @@ public class DBOperation {
     /**
      * 链接到数据
      */
-    private  Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/yan", "root", "123456");
+    private  Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3307/test", "root", "123456");
     private  Statement stmt = conn.createStatement();
     private static ResultSet resultSet;
     /**
@@ -27,8 +27,8 @@ public class DBOperation {
      * @throws SQLException
      */
     public DBOperation() throws SQLException {
-        stmt.close();
-        conn.close();
+
+
     }
     /**
      * 增
@@ -40,6 +40,8 @@ public class DBOperation {
         this.num = number;
         String sql = "insert into "+TABLENAME+" values("+number+",'"+name+",'"+price+",'"+unit+"'"+")";
         count = stmt.executeUpdate(sql);
+        stmt.close();
+        conn.close();
     }
     /**
      * 改  obj--更改的数据
@@ -80,4 +82,5 @@ public class DBOperation {
         String sql = "select * from"+TABLENAME+"where name="+p2;
         count = stmt.executeUpdate(sql);
     }
+
 }
