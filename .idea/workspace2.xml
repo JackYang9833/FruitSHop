@@ -40,7 +40,7 @@
     <configuration name="MainApp" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="ALTERNATIVE_JRE_PATH" value="16" />
       <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="true" />
-      <option name="MAIN_CLASS_NAME" value="com.luvzy.app.MainApp" />
+      <option name="MAIN_CLASS_NAME" value="site.luvzy.app.MainApp" />
       <extension name="coverage">
         <pattern>
           <option name="PATTERN" value="com.luvzy.app.*" />
