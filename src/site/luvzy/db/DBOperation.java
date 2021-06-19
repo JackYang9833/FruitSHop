@@ -21,7 +21,7 @@ public class DBOperation {
     /**
      * 链接到数据
      */
-    private  Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:8080/test", "root", "123456");
+    private  Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/test", "root", "123456");
     private  Statement stmt = conn.createStatement();
     private static ResultSet resultSet;
     /**
