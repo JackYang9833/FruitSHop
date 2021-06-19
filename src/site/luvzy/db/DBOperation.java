@@ -1,17 +1,17 @@
 package site.luvzy.db;
 
 import site.luvzy.data.Reback;
-
 import java.sql.*;
 import java.util.ArrayList;
-
 public class DBOperation {
     /**
      * 表名，数据库名
      */
-    public static final String DB_NAME = "test";
+    public static final String DBNAME = "test";
     public static final String TABLENAME = "fruits";
-    // 判断索引
+    /**
+     * 判断标识
+     */
     private static int count;
     /**
      * 数据
@@ -21,17 +21,13 @@ public class DBOperation {
     /**
      * 链接到数据
      */
-
     private  Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/test", "root", "123456");
     private  Statement stmt = conn.createStatement();
     private static ResultSet resultSet;
     /**
-     *
-     * @构造方法
+     * 构造方法
      */
-    public DBOperation() throws SQLException {
-
-    }
+    public DBOperation() throws SQLException {}
     /**
      * 增
      */
@@ -56,7 +52,6 @@ public class DBOperation {
         int count = stmt.executeUpdate(sql);
         System.out.println(count);
     }
-
     //重载
     public void changData(int obj, String p, String p2, String data) throws SQLException {
         //String sql = "update student set age = 21 where age = 30";
@@ -65,7 +60,6 @@ public class DBOperation {
         System.out.println(count);
     }
     /**
-     *
      * @param &p2 查找的条件
      * @throws SQLException 抛出异常
      */
@@ -87,5 +81,4 @@ public class DBOperation {
         price=Reback.priceOfList;
         unit=Reback.unitOfList;
     }
-
 }

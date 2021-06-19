@@ -1,5 +1,4 @@
 package site.luvzy.view;
-
 import site.luvzy.db.DBOperation;
 import site.luvzy.tools.GuiTools;
 
@@ -8,8 +7,6 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.sql.SQLException;
-
-
 /**
  * @项目名称 luvzy
  * @日期 2021/6/16
@@ -38,12 +35,10 @@ public abstract class MyDialog extends JDialog {
     /**
      * 文本框
      */
-    // JTextField editText[] = new JTextField[4];
     JTextField editAdd[] = new JTextField[4];//添加的文本框
     JTextField editModify[] = new JTextField[4];//修改内容的文本框
     JTextField editQuery = new JTextField(6);//搜索
     JTextField editDelet = new JTextField(6);//删除
-
     //构造方法
     public MyDialog() {
         this(null, true);
@@ -55,15 +50,12 @@ public abstract class MyDialog extends JDialog {
         addComponent();
         addFruitItem();
     }
-
     //初始化
     private void init() {
         this.setTitle("超市货物管理");
         this.setSize(600, 500);
         GuiTools.center(this);
         this.setResizable(false);
-
-
         onResume();
     }
 
@@ -71,15 +63,11 @@ public abstract class MyDialog extends JDialog {
         this.setLayout(null);
         table.getTableHeader().setReorderingAllowed(false);
         table.getTableHeader().setResizingAllowed(false);
-        table.enable(false);
-
+        //table.enable(false);
         tableLabel.setBounds(265, 20, 70, 25);
-
         scrollTable.setBounds(50, 50, 500, 200);
         scrollTable.setViewportView(table);
-
         this.add(tableLabel);
-        //this.add(table);
         this.add(scrollTable);
 
         int x = 50;
@@ -92,7 +80,6 @@ public abstract class MyDialog extends JDialog {
             label[i] = new JLabel(labelName[i]);
             label[i].setBounds(x, 250, 70, 25);
             this.add(label[i]);//标签
-
             // add
             editAdd[i] = new JTextField(6);
             editAdd[i].setBounds(x, 280, 80, 25);
@@ -105,7 +92,6 @@ public abstract class MyDialog extends JDialog {
         button[0].setBounds(460, 280, 90, 25);
         this.add(button[0]);
         x = 50;
-
         //modi
         for (int i = 0; i < 4; ++i) {
             editModify[i] = new JTextField(6);
@@ -115,20 +101,16 @@ public abstract class MyDialog extends JDialog {
         }
         button[1].setBounds(460, 310, 90, 25);
         this.add(button[1]);
-
         //delete
         editDelet.setBounds(50, 340, 80, 25);
         this.add(editDelet);
         button[2].setBounds(460, 340, 90, 25);
         this.add(button[2]);
-
         //query
         editQuery.setBounds(50, 370, 80, 25);
         this.add(editQuery);
-
         button[3].setBounds(460, 370, 90, 25);
         this.add(button[3]);
-
 
         button[0].addActionListener(new ActionListener() {
             @Override
@@ -150,18 +132,21 @@ public abstract class MyDialog extends JDialog {
                 System.out.println(unit);
             }
         });
+
         button[1].addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 modifyFruitItem();
             }
         });
+
         button[2].addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 deleteFruitItem();
             }
         });
+
         button[3].addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
