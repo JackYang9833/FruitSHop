@@ -22,6 +22,7 @@ public class AdminDialogController extends MyDialog {
 
     public AdminDialogController(Frame owner, Boolean modal) {
         super(owner, modal);
+        queryFruitItem();
     }
 
     @Override
@@ -33,6 +34,7 @@ public class AdminDialogController extends MyDialog {
 
     @Override
     public void addFruitItem() {
+
     }
 
     @Override

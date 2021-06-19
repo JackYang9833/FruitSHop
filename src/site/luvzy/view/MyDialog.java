@@ -144,10 +144,10 @@ public abstract class MyDialog extends JDialog {
                 } catch (SQLException throwables) {
                     throwables.printStackTrace();
                 }
-               /* System.out.println(number);
+                System.out.println(number);
                 System.out.println(name);
                 System.out.println(price);
-                System.out.println(unit);*/
+                System.out.println(unit);
             }
         });
         button[1].addActionListener(new ActionListener() {

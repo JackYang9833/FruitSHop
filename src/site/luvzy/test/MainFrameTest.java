@@ -1,5 +1,6 @@
 package site.luvzy.test;
 
+import site.luvzy.controller.MainFrameController;
 import site.luvzy.view.MyFrame;
 
 public class MainFrameTest extends MyFrame {
@@ -10,6 +11,6 @@ public class MainFrameTest extends MyFrame {
     }
 
     public static void main(String[] arg) {
-        new MainFrameTest().setVisible(true);
+        new MainFrameController().setVisible(true);
     }
 }

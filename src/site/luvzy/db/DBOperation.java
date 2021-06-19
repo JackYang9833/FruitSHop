@@ -1,5 +1,7 @@
 package site.luvzy.db;
 
+import site.luvzy.data.Reback;
+
 import java.sql.*;
 import java.util.ArrayList;
 
@@ -19,15 +21,15 @@ public class DBOperation {
     /**
      * 链接到数据
      */
-    private  Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3307/test", "root", "123456");
+
+    private  Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/test", "root", "123456");
     private  Statement stmt = conn.createStatement();
     private static ResultSet resultSet;
     /**
      *
-     * @throws SQLException
+     * @构造方法
      */
     public DBOperation() throws SQLException {
-
 
     }
     /**
@@ -78,9 +80,12 @@ public class DBOperation {
         }
         return data();
     }
-    public void queryData(String p2) throws SQLException {
-        String sql = "select * from"+TABLENAME+"where name="+p2;
-        count = stmt.executeUpdate(sql);
+    public void queryData() throws SQLException {
+        Reback.resume(conn,resultSet,stmt,TABLENAME);
+        num=Reback.numberOfList;
+        name=Reback.nameOfList;
+        price=Reback.priceOfList;
+        unit=Reback.unitOfList;
     }
 
 }

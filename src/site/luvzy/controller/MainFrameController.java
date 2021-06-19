@@ -9,6 +9,6 @@ import site.luvzy.view.MyFrame;
 public class MainFrameController extends MyFrame {
     @Override
     public void showAdminDialog() {
-        new AdminDialogController(this, true).setVisible(true);
+      new AdminDialogController(this, true).setVisible(true);
     }
 }

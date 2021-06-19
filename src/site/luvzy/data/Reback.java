@@ -22,12 +22,11 @@ public class Reback {
         ArrayList<FruitItem> data=new ArrayList<FruitItem>();
             return data;
     }
-
     /**
      * @param conn 数据库连接
      */
-    public static void resum(Connection conn, ResultSet rs, @NotNull Statement statment) throws SQLException {
-        String sql = " ";
+    public static void resume(Connection conn, ResultSet rs, @NotNull Statement statment,String tableName) throws SQLException {
+        String sql = "select * from"+tableName;
         rs = statment.executeQuery(sql);
         while (rs.next()) {
             numberOfList = Integer.parseInt(rs.getString(""));//从数据库里得到编号
