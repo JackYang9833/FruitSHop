@@ -1,6 +1,9 @@
 package site.luvzy.data;
 
 import site.luvzy.controller.FruitItem;
+import site.luvzy.db.DBOperation;
+
+import java.sql.SQLException;
 import java.util.ArrayList;
 
 /**
@@ -18,10 +21,21 @@ public class DataBase {
 
     public static ArrayList<FruitItem> data = new ArrayList<FruitItem>();
     static {
-        name = Reback.nameOfList;
-        number = Reback.numberOfList;
-        price = Reback.priceOfList;
-        unit = Reback.unitOfList;
+        DBOperation operation = null;
+        try {
+            operation = new DBOperation();
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
+        }
+        try {
+            operation.queryData();//
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
+        }
+        name = operation.getName;
+        number = operation.getNum;
+        price = operation.getPrice;
+        unit = operation.getUnit;
         data.add(new FruitItem(number,name,price,unit));
     }
 }

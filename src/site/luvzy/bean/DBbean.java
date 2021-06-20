@@ -14,9 +14,7 @@ import java.sql.SQLException;
  * @ Version:1.0
  */
 public class DBbean {
-
     private Connection dbCon;
-
     String dbURL = "jdbc:mysql://localhost:3306/xxxxx";
     String dbDriver = "com.mysql.jdbc.Driver" ;
     String dbUser = "dbuser";
