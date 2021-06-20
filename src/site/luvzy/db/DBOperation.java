@@ -25,8 +25,8 @@ public class DBOperation {
     public DBOperation()throws SQLException{
         try {
             Class.forName("com.mysql.jdbc.Driver");
-            conn = DriverManager.getConnection("");
-            stmt = conn.createStatement();
+            this.conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/test", "root","123456");
+            this.stmt = conn.createStatement();
             System.out.println("连接成功");
         } catch (ClassNotFoundException e) {
             e.printStackTrace();
@@ -37,12 +37,13 @@ public class DBOperation {
      * 增
      */
     public  void addData(int number, String name, int price, String unit) throws SQLException {
+        new DBOperation();
         this.getUnit = unit;
         this.getName = name;
         this.getPrice = price;
         this.getNum = number;
         String sql = "insert into "+TABLE_NAME+" values("+number+",'"+name+",'"+price+",'"+unit+"'"+")";
-        int count = stmt.executeUpdate(sql);
+        int count = this.stmt.executeUpdate(sql);
         stmt.close();
         conn.close();
     }

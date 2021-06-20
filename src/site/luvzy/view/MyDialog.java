@@ -12,7 +12,7 @@ import java.sql.SQLException;
  * @日期 2021/6/16
  */
 public abstract class MyDialog extends JDialog {
-    private JLabel tableLabel = new JLabel("水果列表");
+    private final JLabel tableLabel = new JLabel("水果列表");
     private JScrollPane scrollTable = new JScrollPane();
     protected JTable table = new JTable();
     /**
@@ -25,20 +25,19 @@ public abstract class MyDialog extends JDialog {
     /**
      * 标签
      */
-    String labelName[] = new String[]{"编号", "名称", "单价", "单位"};
-    JLabel label[] = new JLabel[4];
+    String []labelName = new String[]{"编号", "名称", "单价", "单位"};
+    JLabel []label = new JLabel[4];
     /**
      * 按钮
      */
-    String labelButton[] = new String[]{"添加", "修改", "删除", "查询"};
-    private final JButton button[] = new JButton[4];
+    private final JButton []button = new JButton[4];
     /**
      * 文本框
      */
-    JTextField editAdd[] = new JTextField[4];//添加的文本框
-    JTextField editModify[] = new JTextField[4];//修改内容的文本框
+    JTextField []editAdd = new JTextField[4];//添加的文本框
+    JTextField []editModify = new JTextField[4];//修改内容的文本框
     JTextField editQuery = new JTextField(6);//搜索
-    JTextField editDelet = new JTextField(6);//删除
+    JTextField editDelete = new JTextField(6);//删除
     //构造方法
     public MyDialog() {
         this(null, true);
@@ -84,9 +83,6 @@ public abstract class MyDialog extends JDialog {
             editAdd[i] = new JTextField(6);
             editAdd[i].setBounds(x, 280, 80, 25);
             this.add(editAdd[i]);
-            /**
-             * 获取输入的数据
-             */
             x = x + 100;
         }
         button[0].setBounds(460, 280, 90, 25);
@@ -102,8 +98,8 @@ public abstract class MyDialog extends JDialog {
         button[1].setBounds(460, 310, 90, 25);
         this.add(button[1]);
         //delete
-        editDelet.setBounds(50, 340, 80, 25);
-        this.add(editDelet);
+        editDelete.setBounds(50, 340, 80, 25);
+        this.add(editDelete);
         button[2].setBounds(460, 340, 90, 25);
         this.add(button[2]);
         //query
@@ -116,13 +112,23 @@ public abstract class MyDialog extends JDialog {
             @Override
             public void actionPerformed(ActionEvent e) {
                 addFruitItem();
+
+
+                /**
+                 * for test
+                 */
                 number = Integer.parseInt(editAdd[0].getText());
                 name = editAdd[1].getText();
                 price = Integer.parseInt(editAdd[2].getText());
                 unit = editAdd[3].getText();
+                       /* number=1;
+                        name ="凤梨";
+                        price =12;
+                        unit ="单位";*/
                 try {
                     DBOperation operation = new DBOperation();
                     operation.addData(number,name,price,unit);
+                    System.out.println("Insert finish!");
                 } catch (SQLException throwables) {
                     throwables.printStackTrace();
                 }
@@ -133,26 +139,11 @@ public abstract class MyDialog extends JDialog {
             }
         });
 
-        button[1].addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                modifyFruitItem();
-            }
-        });
+        button[1].addActionListener(e -> modifyFruitItem());
 
-        button[2].addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                deleteFruitItem();
-            }
-        });
+        button[2].addActionListener(e -> deleteFruitItem());
 
-        button[3].addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                queryFruitItem();
-            }
-        });
+        button[3].addActionListener(e -> queryFruitItem());
     }
 
     public abstract void onResume();//显示
